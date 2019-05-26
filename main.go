@@ -6,9 +6,14 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"msg": "Hello World",
-		})
+		c.HTML(
+			200,
+			"index.html",
+			gin.H{
+				"msg": "Hello World",
+			},
+			)
+
 	})
 
 	r.Run(":8088")
