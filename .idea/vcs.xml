@@ -4,8 +4,10 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/gin-contrib/sse" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/gin-gonic/gin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/go-ole/go-ole" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/golang/protobuf" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/mattn/go-isatty" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/ruyi84/GoAlgorithm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/stretchr/testify" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/ugorji/go" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/gopkg.in/go-playground/validator.v8" vcs="Git" />
