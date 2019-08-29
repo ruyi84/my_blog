@@ -8,7 +8,7 @@ import (
 func Test_Creat(t *testing.T) {
 	db := mysql.GetDB()
 
-	table := UserInfoResult{}
+	table := Users{}
 
 	db.CreateTable(&table)
 }

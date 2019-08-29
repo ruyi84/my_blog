@@ -11,7 +11,7 @@ var db *gorm.DB
 func init() {
 	var err error
 
-	db, err = gorm.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/blog?charset=utf8")
+	db, err = gorm.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/blog?charset=utf8&loc=Local&parseTime=True")
 	if err != nil {
 		fmt.Println("gorm.Open Faild", err)
 		return

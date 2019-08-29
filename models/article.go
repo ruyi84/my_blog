@@ -6,20 +6,17 @@ import (
 )
 
 type ArticleInfo struct {
-	Author string //作者
-	Type   string //类型
-	Title  string //标题
+	Author string `form:"author"` //作者
+	Type   string `form:"type"`   //类型
+	Title  string `form:"title"`  //标题
 	gorm.Model
-	ArticleContent //内容
-}
-
-type ArticleContent struct {
-	Content string
+	Content string `form:"content"`
+	//ArticleContent `form:"content"`//内容
 }
 
 func (item *ArticleInfo) AddArticle() *gorm.DB {
 	db := mysql.GetDB()
-	db = db.Create(ArticleInfo{})
+	db = db.Create(&item)
 
 	return db
 }

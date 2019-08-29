@@ -3,18 +3,15 @@ package models
 import (
 	"github.com/jinzhu/gorm"
 	"my_blog/db/mysql"
-	"time"
 )
 
 type Users struct {
-	Id             int       `form:"id"`
-	AccountsNumber string    `form:"username"`  //账号
-	PassWord       string    `form:"password"`  //密码
-	Avatar_url     string    `form:"avatarurl"` //用户头像地址
-	PhoneNum       string    `form:"phonenum"`  //手机号
-	Created_at     time.Time //创建时间
-	Updated_at     time.Time //更新时间
-	Deletes        int       //软删除
+	gorm.Model
+	AccountsNumber string `form:"username"`  //账号
+	PassWord       string `form:"password"`  //密码
+	Avatar_url     string `form:"avatarurl"` //用户头像地址
+	PhoneNum       string `form:"phonenum"`  //手机号
+
 }
 
 type Oauths struct {
@@ -43,4 +40,11 @@ func (item *Users) AddUser() *gorm.DB {
 	db = db.Create(item)
 	return db
 
+}
+
+func (item *Users) GetUser() (*Users, *gorm.DB) {
+	db := mysql.GetDB()
+	db = db.Where("accounts_number = ?", item.AccountsNumber)
+	db = db.First(item)
+	return item, db
 }

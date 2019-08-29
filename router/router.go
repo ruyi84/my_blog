@@ -8,8 +8,13 @@ import (
 func InitRouter() *gin.Engine {
 	router := gin.Default()
 
+	router.LoadHTMLGlob("static/html/*")
+
+	router.GET("/", Index)
+
 	router.POST("/signup", SignUp)
-	router.POST("/Publish")
+	router.POST("/signin", Signin)
+	router.POST("/publish", Publish)
 
 	return router
 }
