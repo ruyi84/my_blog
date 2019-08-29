@@ -1,20 +1,11 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	routers "my_blog/router"
+)
 
 func main() {
-	r := gin.Default()
-
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(
-			200,
-			"index.html",
-			gin.H{
-				"msg": "Hello World",
-			},
-			)
-
-	})
+	r := routers.InitRouter()
 
 	r.Run(":8088")
 }
