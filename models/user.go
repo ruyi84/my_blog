@@ -11,7 +11,7 @@ type Users struct {
 	PassWord       string `form:"password"`  //密码
 	Avatar_url     string `form:"avatarurl"` //用户头像地址
 	PhoneNum       string `form:"phonenum"`  //手机号
-
+	Email          string `form:"email"`     //邮箱
 }
 
 type Oauths struct {

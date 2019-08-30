@@ -59,7 +59,7 @@ func Signin(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{
-		"messge": "登录成功",
+		"message": "登录成功",
 	})
 
 }
