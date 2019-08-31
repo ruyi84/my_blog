@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"my_blog/models"
+	"net/http"
 )
 
 //发布文章方法
@@ -47,5 +48,22 @@ func Publish(c *gin.Context) {
 		fmt.Println("AddArticle err", db.Error)
 		return
 	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "发布成功",
+	})
+
+}
+
+func FindArticles(c *gin.Context) {
+	article := models.ArticleInfo{}
+
+	articleAll, db := article.FindArticle()
+	if db.Error != nil {
+		fmt.Println("Finde Article Faild", db.Error)
+		return
+	}
+
+	c.JSON(http.StatusOK, articleAll)
 
 }

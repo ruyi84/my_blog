@@ -12,9 +12,14 @@ func InitRouter() *gin.Engine {
 
 	router.GET("/", Index)
 
-	router.POST("/signup", SignUp)
-	router.POST("/signin", Signin)
-	router.POST("/publish", Publish)
+	router.POST("/Signup", SignUp)
+	router.POST("/Signin", Signin)
+
+	router.POST("/FindUsers", GetUsers)
+
+	router.POST("/Publish", Publish)
+	router.POST("/Publish/Comment", CommentHandle)
+	router.POST("/FindArticles", FindArticles)
 
 	return router
 }

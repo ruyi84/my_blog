@@ -5,7 +5,8 @@ import (
 	"my_blog/db/mysql"
 )
 
-type Users struct {
+//用户表
+type User struct {
 	gorm.Model
 	AccountsNumber string `form:"username"`  //账号
 	PassWord       string `form:"password"`  //密码
@@ -14,6 +15,7 @@ type Users struct {
 	Email          string `form:"email"`     //邮箱
 }
 
+//第三方登录表
 type Oauths struct {
 	Id         int
 	UserId     int
@@ -23,6 +25,7 @@ type Oauths struct {
 	Credential string //密码凭证
 }
 
+//用户详情表
 type UserInfoResult struct {
 	Id             int
 	AccountsNumber string //账号
@@ -34,7 +37,8 @@ type UserInfoResult struct {
 	QQ             int
 }
 
-func (item *Users) AddUser() *gorm.DB {
+//添加用户
+func (item *User) AddUser() *gorm.DB {
 	db := mysql.GetDB()
 
 	db = db.Create(item)
@@ -42,9 +46,22 @@ func (item *Users) AddUser() *gorm.DB {
 
 }
 
-func (item *Users) GetUser() (*Users, *gorm.DB) {
+//根据账户查询用户信息
+func QueryUserByNumber(AccountsNumber string) (User, *gorm.DB) {
 	db := mysql.GetDB()
-	db = db.Where("accounts_number = ?", item.AccountsNumber)
-	db = db.First(item)
-	return item, db
+	user := User{}
+
+	db = db.Where("accounts_number = ?", AccountsNumber)
+	db = db.Find(&user)
+	return user, db
+}
+
+//查询所有用户信息
+func (item *User) QueryUser() ([]*User, *gorm.DB) {
+	db := mysql.GetDB()
+
+	userAll := make([]*User, 0)
+
+	db = db.Find(&userAll)
+	return userAll, db
 }

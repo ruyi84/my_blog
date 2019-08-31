@@ -8,7 +8,7 @@ import (
 
 func Test_Article(t *testing.T) {
 	db := mysql.GetDB()
-	db = db.CreateTable(Users{})
+	db = db.CreateTable(ArticleInfo{})
 	if db.Error != nil {
 		fmt.Println("CreateTable ArticleInfo Faild", db.Error)
 		return
