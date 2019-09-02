@@ -9,12 +9,6 @@ import (
 
 //注册
 func SignUp(c *gin.Context) {
-	fmt.Println("111")
-
-	//c.HTML(http.StatusOK,"signup.html",gin.H{
-	//
-	//})
-
 	user := models.User{}
 
 	err := c.Bind(&user)
@@ -28,11 +22,16 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
+	if user.PassWord == "" {
+		fmt.Println("密码不能为空")
+		return
+	}
+
 	userState, db := models.QueryUserByNumber(user.AccountsNumber)
-	//if db.Error !=nil{
-	//	fmt.Println("QueryUserByNumber Faild",db.Error)
-	//	return
-	//}
+	if db.Error != nil {
+		fmt.Println("QueryUserByNumber Faild", db.Error)
+		return
+	}
 
 	if userState.AccountsNumber != "" {
 		c.JSON(http.StatusOK, gin.H{
